@@ -3,7 +3,8 @@ from bs4 import BeautifulSoup
 import datetime				
 import random				
 import pymysql				
-import re				
+import re
+import sys
 conn = pymysql.connect(host='127.0.0.1', unix_socket='/var/run/mysqld/mysqld.sock',					
                         user='root', passwd='long1.', db='Question_SOF', charset='utf8')					
 cur = conn.cursor()					
@@ -17,9 +18,9 @@ def query(pageNumber, pageSize):
                 print(re)				
 try:				
         print("nhap so thu tu trang:")				
-        a = int(input())				
+        a = int(sys.argv[1])				
         print("nhap so record trong trang")				
-        b = int(input())				
+        b = int(sys.argv[2])				
         query(a,b)				
 finally:				
                 cur.close()				
